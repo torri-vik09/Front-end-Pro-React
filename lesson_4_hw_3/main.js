@@ -65,46 +65,44 @@ A.splice(0, A.length/2);
 console.log('Перевернутый массив 2', A);
 
 // 2.1 - Создать массивы А и В. Заполнить случайными числами. Найди все элементы которые повторяются в массивах А и B.
-// 2.2 - В одномерном массиве произвести такую замену: 1 элемент поменять с 2, 3 элемент поменять с 4, 5 элемент поменять с 6 и тд. Если длинна массива непарная - последний элемент не трогать.
-// Например: было 1 2 3 4 5 6, должно стать: 2 1 4 3 6 5
 
-let A2 = [1, 2, 3, 4, 5, 6];
-let B2 = [1, 5, 686, 58575, 3, 545];
-// let A2 = new Array(n);
-// let B2 = new Array(n);
-//
-// for(let i = 0; i < A2.length; i++) {
-//  A2[i] = Math.floor(Math.random()*150);
-// }
-// for(let i = 0; i < B2.length; i++) {
-//  B2[i] = Math.floor(Math.random()*150);
-// }
-// console.log('Массив A2 ', A2);
-// console.log('Массив B2 ', B2);
+let A2 = new Array(n);
+let B2 = new Array(n);
 
-// var flattened = [[0, 1], [2, 3], [4, 5]].reduce(function(a, b) {
-//  return a.concat(b);
-// });
-// flattened равен [0, 1, 2, 3, 4, 5]
+for(let i = 0; i < A2.length; i++) {
+ A2[i] = Math.floor(Math.random()*150);
+}
+for(let i = 0; i < B2.length; i++) {
+ B2[i] = Math.floor(Math.random()*150);
+}
+console.log(A2);
+console.log(B2);
 
-let concatA2B2 = A2.concat(B2);
-console.log(concatA2B2)
-let results;
-let xx = [];
-let flag = false;
-
-for(let i = 0; i < concatA2B2.length; i++) {
- results = concatA2B2.filter(item => concatA2B2[i] === item );
- // console.log(results);
-
- if(results.length > 1) {
-  // xx = results;
-  flag = true;
- }
-
- if(flag) {
-  xx += results;
+for(let i = 0; i < A2.length; i++) {
+ for (let j = 0; j < B2.length; j++) {
+  if(A2[i] === B2[j]) {
+   console.log(B2[j]);
+  }
  }
 }
 
-console.log(xx)
+// 2.2 - В одномерном массиве произвести такую замену: 1 элемент поменять с 2, 3 элемент поменять с 4, 5 элемент поменять с 6 и тд. Если длинна массива непарная - последний элемент не трогать.
+// Например: было 1 2 3 4 5 6, должно стать: 2 1 4 3 6 5
+
+let arr = [1,2,3,4,5,6]; // [2, 1, 4, 3, 6, 5]
+// let arr = [1,2,3,4,5,6,7]; // [2, 1, 4, 3, 6, 5, 7]
+let temp = 0;
+let arrLength;
+
+if(arr.length % 2 === 0) {
+ arrLength = arr.length;
+} else {
+ arrLength = arr.length -1;
+}
+
+for (let i = 0; i < arrLength; i+=2) {
+ temp = arr[i];
+ arr[i] = arr[i+1];
+ arr[i+1] = temp;
+}
+console.log(arr);
